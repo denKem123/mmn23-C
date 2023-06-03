@@ -37,9 +37,9 @@ ptr createfibonlist(ptr *hptr, int num)
     ptr p;
     if (num == 0)
     {
-        *hptr = createfibon(p, 1);
-        p = *hptr;
+        p = createfibon(p, 1);
         p->next = p;
+        *hptr = p;
         return p;
     }
     else
