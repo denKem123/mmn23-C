@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     {
         create_fibonacci_list(&hptr, num);
         print_fibonacci_list(hptr);
-        save_fibonacci_list(hptr);
+        save_fibonacci_list(argv[0], hptr, num);
         free_fibonacci_list(&hptr);
     }
     else if (scan == 1 && num > 89)
@@ -91,8 +91,31 @@ void print_fibonacci_list_recursive(ptr hptr, ptr current)
     printf("%d -> ", current->num);
 }
 
-void save_fibonacci_list(ptr hptr)
+void save_fibonacci_list(char *path, ptr hptr, int num)
 {
+    char *str;
+    str = append_two_strings("Your fibonacci numbers:\n", "*for n = ");
+    printf("%s\n", str);
+    free(str);
+}
+
+char *append_two_strings(char *str1, char *str2)
+{
+    char *str;
+    str = realloc(str1, strlen(str1) + strlen(str2) + 1);
+    if (str != NULL)
+    {
+        strcat(str, str2);
+    }
+    return str;
+}
+
+char *number_to_string(unsigned long num){
+    char str[25];
+    
+    snprintf(str, sizeof(str), "%d", num);
+    
+    return str;
 }
 
 void free_fibonacci_list(ptr *hptr)
