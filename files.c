@@ -16,7 +16,6 @@ int savetofile(char * path,char * output)
     fprintf(file, output);
     fprintf(file, "\n");
     
-    // Close the file
     fclose(file);
     
     return 0;
