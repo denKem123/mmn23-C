@@ -114,5 +114,5 @@ void freefibonlist(ptr *hptr)
             p->next = NULL;
         *hptr = (*hptr)->next;
         free(p);
-    } while (p);
+    } while (*hptr);
 }
