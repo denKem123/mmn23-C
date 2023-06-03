@@ -2,6 +2,6 @@
 
 ptr createfibonlist(ptr *, int);
 ptr createfibon(ptr, int);
-void printfibonlist(ptr *);
-void savefibonlist(ptr *);
+void printfibonlist(ptr);
+void savefibonlist(ptr);
 void freefibonlist(ptr *);

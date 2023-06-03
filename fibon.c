@@ -5,8 +5,7 @@
 
 int main(int argc, char *argv[])
 {
-    ptr *hptr = NULL;
-    char *path;
+    ptr hptr = NULL;
     int num;
 
     if (argc == 1)
@@ -14,14 +13,13 @@ int main(int argc, char *argv[])
         printf("\n Please provide a path file for the fibonacci value\n");
         exit(0);
     }
-    path = argv[1];
 
     if (scanf("%d", &num) == 1 && num >= 0)
     {
-        createfibonlist(hptr, num);
+        createfibonlist(&hptr, num);
         printfibonlist(hptr);
         savefibonlist(hptr);
-        freefibonlist(hptr);
+        freefibonlist(&hptr);
     }
     else
     {
@@ -37,7 +35,7 @@ ptr createfibonlist(ptr *hptr, int num)
     ptr p;
     if (num == 0)
     {
-        p = createfibon(p, 1);
+        p = createfibon(NULL, 1);
         p->next = p;
         *hptr = p;
         return p;
@@ -73,7 +71,7 @@ ptr createfibon(ptr hptr, int num)
     return fib;
 }
 
-void printfibonlist(ptr *hptr)
+void printfibonlist(ptr hptr)
 {
     ptr current;
     if (hptr == NULL)
@@ -81,7 +79,7 @@ void printfibonlist(ptr *hptr)
         printf("\ncan't print empty list!!!\n");
         return;
     }
-    current = *hptr;
+    current = hptr;
     printf("\n");
     do
     {
@@ -91,9 +89,9 @@ void printfibonlist(ptr *hptr)
     printf("*\n");
 }
 
-void savefibonlist(ptr *hptr)
+void savefibonlist(ptr hptr)
 {
-    ptr *current;
+    ptr current;
     if (hptr == NULL)
     {
         printf("\ncan't save empty list!!!\n");
