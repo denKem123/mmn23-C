@@ -87,11 +87,12 @@ void print_fibonacci_list_recursive(ptr hptr, ptr current)
     if (current == hptr)
         return;
     print_fibonacci_list_recursive(hptr, current->next);
-    printf("%d -> ", current->num);
+    printf("%lu -> ", current->num);
 }
 
 void save_fibonacci_list(char *path, ptr hptr, int num)
 {
+    printf("%s", path);
     FILE *file = fopen(path, "w");
 
     if (file == NULL)
@@ -101,7 +102,7 @@ void save_fibonacci_list(char *path, ptr hptr, int num)
     }
 
     fprintf(file, "Your fibonacci numbers:\n");
-    fprintf(file, "*for n = %d", num);
+    fprintf(file, "*for n = %lu", num);
     fprintf(file, "\n");
 
     fclose(file);
