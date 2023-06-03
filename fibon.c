@@ -14,6 +14,7 @@ int main(int argc, char *argv[])
         exit(0);
     }
 
+    printf("\n Please enter the amount of fibonacci numbers:\n");
     if (scanf("%d", &num) == 1 && num >= 0)
     {
         createfibonlist(&hptr, num);
@@ -24,7 +25,7 @@ int main(int argc, char *argv[])
     }
     else
     {
-        printf("\nA positive integer is required\n");
+        printf("A positive integer is required\n");
         exit(0);
     }
 
@@ -64,7 +65,7 @@ ptr createfibon(ptr hptr, int num)
     fib = (ptr)malloc(sizeof(fibnum));
     if (!fib)
     {
-        printf("\nNot enough Memory\n");
+        printf("Not enough Memory\n");
         exit(0);
     }
     fib->num = num;
@@ -75,11 +76,6 @@ ptr createfibon(ptr hptr, int num)
 void printfibonlist(ptr hptr)
 {
     ptr current;
-    if (hptr == NULL)
-    {
-        printf("\ncan't print empty list!!!\n");
-        return;
-    }
     current = hptr;
     printf("\n");
     do
@@ -92,26 +88,20 @@ void printfibonlist(ptr hptr)
 
 void savefibonlist(ptr hptr)
 {
-    ptr current;
-    if (hptr == NULL)
-    {
-        printf("\ncan't save empty list!!!\n");
-        return;
-    }
 }
+
 void freefibonlist(ptr *hptr)
 {
-    ptr* h;
-    ptr p;
-    h = hptr;
-
-    while (*h)
+    ptr current, p;
+    current = hptr;
+    printf("\n");
+    do
     {
-        p = *h;
-        if (p->next != *hptr)
-            *h = (*h)->next;
-        else
-            *h = NULL;
+        if (current->next == *hptr)
+            current->next = NULL;
+        p = current;
+        current = current->next;
         free(p);
-    }
+    } while (current);
+    printf("\n");
 }
