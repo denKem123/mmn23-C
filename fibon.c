@@ -92,10 +92,19 @@ void print_fibonacci_list_recursive(ptr hptr, ptr current)
 
 void save_fibonacci_list(char *path, ptr hptr, int num)
 {
-    char *str;
-    str = append_two_strings("Your fibonacci numbers:\n", "*for n = ");
-    printf("%s\n", str);
-    free(str);
+    FILE *file = fopen(path, "w");
+
+    if (file == NULL)
+    {
+        printf("Failed to open the file.\n");
+        exit(0);
+    }
+
+    fprintf(file, "Your fibonacci numbers:\n");
+    fprintf(file, "*for n = %d", num);
+    fprintf(file, "\n");
+
+    fclose(file);
 }
 
 void free_fibonacci_list(ptr *hptr)
