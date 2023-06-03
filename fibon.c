@@ -34,29 +34,31 @@ int main(int argc, char *argv[])
 
 ptr createfibonlist(ptr *hptr, int num)
 {
-    ptr *p = NULL;
+    ptr p;
     if (num == 0)
     {
-        *hptr = createfibon(hptr, 1);
-        return *hptr;
+        *hptr = createfibon(p, 1);
+        p = *hptr;
+        p->next = p;
+        return p;
     }
     else
     {
         p = createfibonlist(hptr, num - 1);
         if (num == 1)
         {
-            (*p)->next = createfibon(hptr, 1);
+            p->next = createfibon(*hptr, 1);
             return *hptr;
         }
         else
         {
-            (*p)->next->next = createfibon(hptr, (*p)->num + (*p)->next->num);
+            p->next->next = createfibon(*hptr, p->num + p->next->num);
         }
     }
-    return (*p)->next;
+    return p->next;
 }
 
-ptr createfibon(ptr *hptr,int num)
+ptr createfibon(ptr hptr, int num)
 {
     ptr fib;
 
