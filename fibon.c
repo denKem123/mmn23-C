@@ -56,7 +56,7 @@ ptr *createfibonlist(ptr *hptr, int num)
     return (*p)->next;
 }
 
-ptr createfibon(int num)
+ptr createfibon(ptr *hptr,int num)
 {
     ptr fib;
 
@@ -67,6 +67,7 @@ ptr createfibon(int num)
         exit(0);
     }
     fib->num = num;
+    fib->next = hptr;
     return fib;
 }
 
