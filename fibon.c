@@ -106,9 +106,10 @@ void freefibonlist(ptr *hptr)
     while (*hptr)
     {
         p = *hptr;
-        if (p->next == *hptr)
-            p->next = NULL;
-        *hptr = (*hptr)->next;
+        if (p->next != *hptr)
+            *hptr = (*hptr)->next;
+        else
+            *hptr = NULL;
         free(p);
     }
 }
