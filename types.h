@@ -1,6 +1,6 @@
 typedef struct node * ptr;
 
 typedef struct node {
-  int num;
+  unsigned long num;
   ptr next;
 } fibnum;
