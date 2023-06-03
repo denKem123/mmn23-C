@@ -92,7 +92,6 @@ void print_fibonacci_list_recursive(ptr hptr, ptr current)
 
 void save_fibonacci_list(char *path, ptr hptr, int num)
 {
-    printf("%s", path);
     FILE *file = fopen(path, "w");
 
     if (file == NULL)
