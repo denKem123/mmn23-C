@@ -10,11 +10,11 @@ int main(int argc, char *argv[])
 
     if (argc == 1)
     {
-        printf("\n Please provide a path file for the fibonacci value\n");
+        printf("\nPlease provide a path file for the fibonacci value\n");
         exit(0);
     }
 
-    printf("\n Please enter the amount of fibonacci numbers:\n");
+    printf("\nPlease enter the amount of fibonacci numbers:\n");
     if (scanf("%d", &num) == 1 && num >= 0)
     {
         createfibonlist(&hptr, num);
@@ -92,16 +92,14 @@ void savefibonlist(ptr hptr)
 
 void freefibonlist(ptr *hptr)
 {
-    ptr current, p;
-    current = hptr;
-    printf("\n");
-    do
+    ptr p;
+    while (*hptr)
     {
-        if (current->next == *hptr)
-            current->next = NULL;
-        p = current;
-        current = current->next;
+        p = (*hptr)->next;
+        if (p == *hptr)
+            *hptr = NULL;
+        else
+            (*hptr)->next = (*hptr)->next->next;
         free(p);
-    } while (current);
-    printf("\n");
+    }
 }
