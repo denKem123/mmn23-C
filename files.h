@@ -1,1 +1,1 @@
-int savetofile(char *);
+int savetofile(char *,char *);
