@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
         printfibonlist(hptr);
         savefibonlist(hptr);
         freefibonlist(&hptr);
+        printf("\nXxx\n");
     }
     else
     {
