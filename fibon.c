@@ -102,18 +102,13 @@ void savefibonlist(ptr hptr)
 void freefibonlist(ptr *hptr)
 {
     ptr p;
-    if (hptr == NULL)
-    {
-        printf("\ncan't free empty list!!!\n");
-        return;
-    }
 
-    do
+    while (*hptr)
     {
         p = *hptr;
         if (p->next == *hptr)
             p->next = NULL;
         *hptr = (*hptr)->next;
         free(p);
-    } while (*hptr);
+    }
 }
