@@ -101,15 +101,17 @@ void savefibonlist(ptr hptr)
 }
 void freefibonlist(ptr *hptr)
 {
+    ptr* h;
     ptr p;
+    h = hptr;
 
-    while (*hptr)
+    while (*h)
     {
-        p = *hptr;
+        p = *h;
         if (p->next != *hptr)
-            *hptr = (*hptr)->next;
+            *h = (*h)->next;
         else
-            *hptr = NULL;
+            *h = NULL;
         free(p);
     }
 }
