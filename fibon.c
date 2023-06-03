@@ -17,10 +17,10 @@ int main(int argc, char *argv[])
     printf("\nPlease enter the amount of fibonacci numbers:\n");
     if (scanf("%d", &num) == 1 && num >= 0)
     {
-        createfibonlist(&hptr, num);
-        printfibonlist(hptr);
-        savefibonlist(hptr);
-        freefibonlist(&hptr);
+        create_fibonacci_list(&hptr, num);
+        print_fibonacci_list(hptr);
+        save_fibonacci_list(hptr);
+        free_fibonacci_list(&hptr);
         printf("\nXxx\n");
     }
     else
@@ -32,33 +32,33 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-ptr createfibonlist(ptr *hptr, int num)
+ptr create_fibonacci_list(ptr *hptr, int num)
 {
     ptr p;
     if (num == 0)
     {
-        p = createfibon(NULL, 1);
+        p = create_fibonacci(NULL, 1);
         p->next = p;
         *hptr = p;
         return p;
     }
     else
     {
-        p = createfibonlist(hptr, num - 1);
+        p = create_fibonacci_list(hptr, num - 1);
         if (num == 1)
         {
-            p->next = createfibon(*hptr, 1);
+            p->next = create_fibonacci(*hptr, 1);
             return *hptr;
         }
         else
         {
-            p->next->next = createfibon(*hptr, p->num + p->next->num);
+            p->next->next = create_fibonacci(*hptr, p->num + p->next->num);
         }
     }
     return p->next;
 }
 
-ptr createfibon(ptr hptr, int num)
+ptr create_fibonacci(ptr hptr, int num)
 {
     ptr fib;
 
@@ -73,24 +73,26 @@ ptr createfibon(ptr hptr, int num)
     return fib;
 }
 
-void printfibonlist(ptr hptr)
+void print_fibonacci_list(ptr hptr)
 {
-    ptr current;
-    current = hptr;
     printf("\n");
-    do
-    {
-        printf("%d %s ", current->num, current->next != hptr ? "-> " : "");
-        current = current->next;
-    } while (current != hptr);
-    printf("\n");
+    print_fibonacci_list_recursive(hptr, hptr->next);
+    printf("%d\n", hptr->num);
 }
 
-void savefibonlist(ptr hptr)
+void print_fibonacci_list_recursive(ptr hptr, ptr current)
+{
+    if (current == hptr)
+        return;
+    print_fibonacci_list_recursive(hptr, current->next);
+    printf("%d ->", current->num);
+}
+
+void save_fibonacci_list(ptr hptr)
 {
 }
 
-void freefibonlist(ptr *hptr)
+void free_fibonacci_list(ptr *hptr)
 {
     ptr p;
     while (*hptr)

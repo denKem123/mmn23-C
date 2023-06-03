@@ -4,7 +4,7 @@
 /*
     save text to file
 */
-int savetofile(char * path,char * output)
+int save_to_file(char * path,char * output)
 {
     FILE *file = fopen("example.txt", "w");
     
