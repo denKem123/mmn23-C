@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     {
         create_fibonacci_list(&hptr, num);
         print_fibonacci_list(hptr);
-        save_fibonacci_list(argv[0], hptr, num);
+        save_fibonacci_list(argv[1], hptr, num);
         free_fibonacci_list(&hptr);
     }
     else if (scan == 1 && num > 89)
