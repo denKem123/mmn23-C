@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "fibon.h"
-#include "files.h"
 
 int main(int argc, char *argv[])
 {
@@ -97,25 +96,6 @@ void save_fibonacci_list(char *path, ptr hptr, int num)
     str = append_two_strings("Your fibonacci numbers:\n", "*for n = ");
     printf("%s\n", str);
     free(str);
-}
-
-char *append_two_strings(char *str1, char *str2)
-{
-    char *str;
-    str = realloc(str1, strlen(str1) + strlen(str2) + 1);
-    if (str != NULL)
-    {
-        strcat(str, str2);
-    }
-    return str;
-}
-
-char *number_to_string(unsigned long num){
-    char str[25];
-    
-    snprintf(str, sizeof(str), "%d", num);
-    
-    return str;
 }
 
 void free_fibonacci_list(ptr *hptr)
