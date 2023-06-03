@@ -32,13 +32,13 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-ptr *createfibonlist(ptr *hptr, int num)
+ptr createfibonlist(ptr *hptr, int num)
 {
     ptr *p = NULL;
     if (num == 0)
     {
         *hptr = createfibon(hptr, 1);
-        return hptr;
+        return *hptr;
     }
     else
     {
@@ -46,7 +46,7 @@ ptr *createfibonlist(ptr *hptr, int num)
         if (num == 1)
         {
             (*p)->next = createfibon(hptr, 1);
-            return hptr;
+            return *hptr;
         }
         else
         {
