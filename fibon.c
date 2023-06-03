@@ -83,10 +83,10 @@ void printfibonlist(ptr hptr)
     printf("\n");
     do
     {
-        printf("%d ->", current->num);
+        printf("%d %s ", current->num, current->next != hptr ? "-> " : "");
         current = current->next;
     } while (current != hptr);
-    printf("*\n");
+    printf("\n");
 }
 
 void savefibonlist(ptr hptr)
