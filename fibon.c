@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     }
 
     printf("\nPlease enter the amount of fibonacci numbers:\n");
-    if ((scan = scanf("%d", &num)) == 1 && num >= 0)
+    if ((scan = scanf("%d", &num)) == 1 && num >= 0 && num < 90)
     {
         create_fibonacci_list(&hptr, num);
         print_fibonacci_list(hptr);
@@ -24,6 +24,7 @@ int main(int argc, char *argv[])
     else if (scan == 1 && num > 89)
     {
         printf("the maximum fibonacci number that can be displayed as unsigned long is - 89\n");
+        exit(0);
     }
     else
     {
@@ -119,8 +120,10 @@ void free_fibonacci_list(ptr *hptr)
     while (*hptr)
     {
         p = (*hptr)->next;
-        if (p == *hptr)
+        if (p == *hptr){
             *hptr = NULL;
+            p->next = NULL;
+        }
         else
             (*hptr)->next = (*hptr)->next->next;
         free(p);
